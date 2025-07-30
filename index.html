@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nopccelerate - AI-Powered Recommendation Engine</title>
+    <title>Nopccelerate - The Ultimate AI Recommendation Engine</title>
     <style>
         * {
             margin: 0;
@@ -45,6 +45,14 @@
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .product-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-left: 1rem;
         }
 
         .nav-links {
@@ -102,27 +110,55 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
             z-index: 2;
         }
 
+        .product-tag {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             margin-bottom: 1rem;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInUp 1s ease;
+            animation: fadeInUp 1s ease 0.1s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
         }
 
         .hero-stats {
@@ -130,7 +166,7 @@
             justify-content: center;
             gap: 3rem;
             margin-top: 3rem;
-            animation: fadeInUp 1s ease 0.4s both;
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
         .stat {
@@ -148,8 +184,8 @@
             opacity: 0.8;
         }
 
-        /* Features Section */
-        .features {
+        /* Product Overview */
+        .product-overview {
             padding: 80px 0;
             background: #f8f9fa;
         }
@@ -163,56 +199,121 @@
         .section-title {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             color: #333;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .overview-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .overview-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .overview-visual {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .overview-visual::before {
+            content: '🤖';
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* Core Features */
+        .core-features {
+            padding: 80px 0;
+            background: white;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .feature-card {
-            background: white;
-            padding: 2rem;
+            background: #f8f9fa;
+            padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+            border-left: 4px solid transparent;
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-        }
+        .feature-card:nth-child(1) { border-left-color: #ff6b6b; }
+        .feature-card:nth-child(2) { border-left-color: #4ecdc4; }
+        .feature-card:nth-child(3) { border-left-color: #45b7d1; }
+        .feature-card:nth-child(4) { border-left-color: #96ceb4; }
+        .feature-card:nth-child(5) { border-left-color: #feca57; }
+        .feature-card:nth-child(6) { border-left-color: #ff9ff3; }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            background: white;
         }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            font-size: 1.5rem;
+            display: block;
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
             color: #333;
         }
@@ -222,11 +323,49 @@
             line-height: 1.6;
         }
 
-        /* Benefits Section */
-        .benefits {
+        /* Use Cases */
+        .use-cases {
             padding: 80px 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .use-case-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .use-case-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .use-case-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #4ecdc4;
+        }
+
+        .use-case-item p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: #f8f9fa;
         }
 
         .benefits-grid {
@@ -236,49 +375,32 @@
             margin-top: 3rem;
         }
 
-        .benefit-item {
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
             text-align: center;
-            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
         }
 
         .benefit-number {
             font-size: 3rem;
             font-weight: bold;
-            color: #4ecdc4;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
 
         .benefit-text {
             font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .testimonial-text {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
             color: #555;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #333;
+            font-weight: 500;
         }
 
         /* CTA Section */
@@ -290,14 +412,17 @@
         }
 
         .cta-section h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
         }
 
         .cta-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-buttons {
@@ -310,7 +435,7 @@
         .btn-primary {
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border: none;
             border-radius: 25px;
             cursor: pointer;
@@ -323,7 +448,7 @@
         .btn-secondary {
             background: transparent;
             color: white;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             border: 2px solid white;
             border-radius: 25px;
             cursor: pointer;
@@ -366,7 +491,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero-stats {
@@ -378,7 +503,12 @@
                 display: none;
             }
             
-            .cta-buttons {
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons, .hero-buttons {
                 flex-direction: column;
                 align-items: center;
             }
@@ -389,123 +519,200 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <div class="logo">Nopccelerate</div>
+            <div class="logo">
+                Nopccelerate
+                <span class="product-badge">AI Engine</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
                 <li><a href="#benefits">Benefits</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#demo">Demo</a></li>
             </ul>
-            <a href="#demo" class="cta-btn">Get Demo</a>
+            <a href="#demo" class="cta-btn">Try Now</a>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Boost Your Sales by 300%</h1>
-            <p>Transform your business with AI-powered recommendations that understand your customers better than they understand themselves. Increase conversions, reduce cart abandonment, and create personalized shopping experiences that drive revenue.</p>
-            <a href="#demo" class="btn-primary">Start Free Trial</a>
+            <div class="product-tag">🚀 NEW AI PRODUCT LAUNCH</div>
+            <h1>Nopccelerate</h1>
+            <div class="subtitle">The AI Recommendation Engine That Sells For You</div>
+            <p>Transform your e-commerce store with our intelligent recommendation engine. Nopccelerate uses advanced AI to understand customer behavior, predict preferences, and deliver personalized recommendations that boost sales by up to 300%.</p>
+            
+            <div class="hero-buttons">
+                <a href="#demo" class="btn-primary">Start Free Trial</a>
+                <a href="#features" class="btn-secondary">See How It Works</a>
+            </div>
             
             <div class="hero-stats">
                 <div class="stat">
                     <div class="stat-number">300%</div>
-                    <div class="stat-label">Sales Increase</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">85%</div>
-                    <div class="stat-label">Cart Recovery</div>
+                    <div class="stat-label">Sales Boost</div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">24/7</div>
                     <div class="stat-label">AI Assistant</div>
                 </div>
+                <div class="stat">
+                    <div class="stat-number">5min</div>
+                    <div class="stat-label">Setup Time</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <!-- Product Overview -->
+    <section class="product-overview">
         <div class="container">
-            <h2 class="section-title">Why Choose Nopccelerate?</h2>
+            <h2 class="section-title">What is Nopccelerate?</h2>
+            <p class="section-subtitle">Nopccelerate is a cutting-edge AI recommendation engine designed to revolutionize how your customers discover and purchase products.</p>
+            
+            <div class="overview-grid">
+                <div class="overview-content">
+                    <h3>Intelligent Product Discovery</h3>
+                    <p>Our AI engine analyzes customer behavior, purchase history, and browsing patterns to deliver hyper-personalized product recommendations that feel like magic to your customers.</p>
+                    
+                    <ul class="feature-list">
+                        <li>Real-time behavior analysis</li>
+                        <li>Predictive customer preferences</li>
+                        <li>Cross-platform integration</li>
+                        <li>Advanced machine learning algorithms</li>
+                        <li>Seamless chatbot integration</li>
+                    </ul>
+                </div>
+                
+                <div class="overview-visual">
+                    <h3>AI-Powered Intelligence</h3>
+                    <p>Nopccelerate learns from every customer interaction, continuously improving its recommendations to maximize your sales potential.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Features -->
+    <section class="core-features" id="features">
+        <div class="container">
+            <h2 class="section-title">Core Features</h2>
+            <p class="section-subtitle">Everything you need to transform your e-commerce experience</p>
             
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Smart Personalization</h3>
-                    <p>Our AI learns from every customer interaction to deliver hyper-personalized recommendations that feel like magic. Watch your conversion rates soar as customers discover exactly what they need.</p>
+                    <span class="feature-icon">🎯</span>
+                    <h3>Smart Personalization Engine</h3>
+                    <p>Delivers hyper-personalized recommendations based on individual customer behavior, preferences, and purchase history. Each customer gets a unique shopping experience.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>Intelligent Chatbot</h3>
-                    <p>24/7 AI assistant that doesn't just answer questions - it actively sells. From product discovery to checkout assistance, our chatbot turns every conversation into a sales opportunity.</p>
+                    <span class="feature-icon">💬</span>
+                    <h3>AI-Powered Chatbot</h3>
+                    <p>24/7 intelligent assistant that doesn't just answer questions - it actively sells. Provides product recommendations, handles exchanges, and guides customers to purchase.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Visual Search Revolution</h3>
-                    <p>Customers can snap a photo and instantly find similar products in your store. Turn inspiration into instant purchases with our cutting-edge image recognition technology.</p>
+                    <span class="feature-icon">📸</span>
+                    <h3>Visual Search Technology</h3>
+                    <p>Revolutionary camera-based product recognition. Customers can snap photos and instantly find similar products in your catalog using advanced image recognition.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🎁</div>
-                    <h3>Smart Bundling</h3>
-                    <p>Automatically create irresistible product bundles based on customer behavior. Increase average order value by suggesting perfect combinations customers actually want.</p>
+                    <span class="feature-icon">🎁</span>
+                    <h3>Intelligent Bundling</h3>
+                    <p>Automatically creates irresistible product bundles based on customer behavior and purchase patterns. Increases average order value effortlessly.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Real-Time Urgency</h3>
-                    <p>Create genuine urgency with smart inventory alerts and time-sensitive offers. Turn browsers into buyers with perfectly timed nudges that feel helpful, not pushy.</p>
+                    <span class="feature-icon">⚡</span>
+                    <h3>Real-Time Urgency Triggers</h3>
+                    <p>Creates genuine urgency with smart inventory alerts, time-sensitive offers, and personalized nudges that convert browsers into buyers.</p>
                 </div>
                 
                 <div class="feature-card">
-                    <div class="feature-icon">🎂</div>
-                    <h3>Lifecycle Marketing</h3>
-                    <p>Never miss a birthday, anniversary, or special moment. Our AI remembers what matters to your customers and creates meaningful touchpoints that build loyalty.</p>
+                    <span class="feature-icon">📊</span>
+                    <h3>Advanced Analytics</h3>
+                    <p>Comprehensive insights into customer behavior, recommendation performance, and sales impact. Make data-driven decisions to optimize your strategy.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits Section -->
+    <!-- Use Cases -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <h2 class="section-title">Powerful Use Cases</h2>
+            <p class="section-subtitle">See how Nopccelerate transforms every aspect of your customer journey</p>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-item">
+                    <h4>🛒 Smart Upselling</h4>
+                    <p>Automatically suggest premium versions and accessories at the perfect moment to maximize order value.</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>🔄 Exchange Reminders</h4>
+                    <p>Proactively remind customers about return windows and offer seamless exchange options.</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>🎂 Birthday Surprises</h4>
+                    <p>Deliver personalized birthday offers and curated gift suggestions to build customer loyalty.</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>👔 Workwear Personalization</h4>
+                    <p>Suggest professional attire based on time of week and customer's work-related browsing patterns.</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>👨‍👩‍👧‍👦 Family Bundles</h4>
+                    <p>Create family-friendly product combinations for customers shopping for multiple family members.</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>💳 EMI Assistance</h4>
+                    <p>Instantly check EMI eligibility for high-value products and streamline the purchase process.</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>🌟 Hidden Gems</h4>
+                    <p>Promote high-rated but low-visibility products to help customers discover amazing finds.</p>
+                </div>
+                
+                <div class="use-case-item">
+                    <h4>🧳 Travel Bundles</h4>
+                    <p>Suggest travel-related product combinations when customers show interest in travel items.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
     <section class="benefits" id="benefits">
         <div class="container">
-            <h2 class="section-title">Real Results, Real Fast</h2>
+            <h2 class="section-title">Proven Results</h2>
+            <p class="section-subtitle">Real metrics from businesses using Nopccelerate</p>
             
             <div class="benefits-grid">
-                <div class="benefit-item">
+                <div class="benefit-card">
                     <div class="benefit-number">300%</div>
-                    <div class="benefit-text">Average increase in sales within 30 days</div>
+                    <div class="benefit-text">Average Sales Increase</div>
                 </div>
                 
-                <div class="benefit-item">
+                <div class="benefit-card">
                     <div class="benefit-number">85%</div>
-                    <div class="benefit-text">Reduction in cart abandonment</div>
+                    <div class="benefit-text">Cart Abandonment Reduction</div>
                 </div>
                 
-                <div class="benefit-item">
+                <div class="benefit-card">
                     <div class="benefit-number">60%</div>
-                    <div class="benefit-text">Increase in average order value</div>
+                    <div class="benefit-text">Higher Average Order Value</div>
                 </div>
                 
-                <div class="benefit-item">
-                    <div class="benefit-number">24hrs</div>
-                    <div class="benefit-text">Setup time - no technical skills needed</div>
+                <div class="benefit-card">
+                    <div class="benefit-number">5min</div>
+                    <div class="benefit-text">Quick Setup Process</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">What Our Customers Say</h2>
-            
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Nopccelerate transformed our online store overnight. Our sales increased by 280% in the first month, and our customers love the personalized experience. It's like having a personal shopper for every visitor!"</p>
-                <div class="testimonial-author">- Sarah Johnson, CEO of TrendyFashion</div>
             </div>
         </div>
     </section>
@@ -513,12 +720,12 @@
     <!-- CTA Section -->
     <section class="cta-section" id="demo">
         <div class="container">
-            <h2>Ready to 3X Your Sales?</h2>
-            <p>Join thousands of businesses already using Nopccelerate to boost their revenue. Start your free trial today - no credit card required.</p>
+            <h2>Ready to Launch Nopccelerate?</h2>
+            <p>Join the AI revolution and transform your e-commerce store with intelligent recommendations that actually sell. Start your free trial today and see the difference Nopccelerate makes.</p>
             
             <div class="cta-buttons">
                 <a href="#" class="btn-primary">Start Free Trial</a>
-                <a href="#" class="btn-secondary">Schedule Demo</a>
+                <a href="#" class="btn-secondary">Request Demo</a>
             </div>
         </div>
     </section>
@@ -526,7 +733,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Nopccelerate. All rights reserved. | Transforming businesses with AI-powered recommendations.</p>
+            <p>&copy; 2025 Nopccelerate AI Recommendation Engine. Revolutionizing e-commerce with intelligent recommendations.</p>
         </div>
     </footer>
 </body>
